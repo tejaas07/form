@@ -24,7 +24,16 @@ interface FormData {
 const validationSchema = yup.object().shape({
 	name: yup.string().required("Name is required"),
 	email: yup.string().email("Invalid email").required("Email is required"),
-	contact: yup.number().required("Contact is required").min(10),
+	contact: yup
+		.number()
+		.required("Contact is required")
+		.integer("Contact must be a whole number")
+		.positive("Contact must be a positive number")
+		.test(
+			"isTenDigits",
+			"Contact must be a 10-digit number",
+			(value) => String(value).length === 10
+		),
 	weekdays: yup.array().min(1, "Select at least one weekday").of(yup.string()),
 	gender: yup.string().required("Gender is required"),
 	dob: yup.date().required("Date of Birth is required"),
@@ -47,7 +56,6 @@ const Forms = ({ updateTable, formData, hide }: any) => {
 	) => {
 		// Handle form submission logic here
 		if (formData) {
-			console.log("updates", values);
 			updateTable(values);
 			hide();
 			toast.success("Form data updated successfully.", {
@@ -61,8 +69,6 @@ const Forms = ({ updateTable, formData, hide }: any) => {
 				theme: "dark",
 			});
 		} else {
-			console.log(values);
-
 			values._id = uuidv4();
 
 			updateTable(values);
@@ -125,7 +131,7 @@ const Forms = ({ updateTable, formData, hide }: any) => {
 								</label>
 								<Field
 									className="field"
-									type="number"
+									type="tel"
 									id="contact"
 									name="contact"
 								/>

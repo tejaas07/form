@@ -20,7 +20,6 @@ const DataHandler = ({}) => {
 		setTableData((prevTableData) => [...prevTableData, data]);
 	};
 	const updateEntry = (data: any) => {
-		console.log(data);
 		setTableData((prevTableData) => {
 			return prevTableData.map((item) => {
 				if (item._id === data._id) {
@@ -32,7 +31,6 @@ const DataHandler = ({}) => {
 	};
 
 	const deleteEntry = (entry: any) => {
-		console.log(entry);
 		setTableData(tableData.filter((item) => item._id != entry));
 		toast.success("Entry deleted successfully.", {
 			position: "top-right",
