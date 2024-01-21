@@ -1,0 +1,46 @@
+.display-data {
+	background-color: #ffffff;
+	margin: 15px;
+	border-radius: 50px;
+	padding: 20px 0px;
+	.no-entry-display {
+		margin: 100px;
+		text-align: center;
+	}
+}
+
+.button-container {
+	display: flex;
+
+	button {
+		display: flex;
+		align-items: center;
+		border-radius: 20px;
+		// border: none;
+		// padding: 5px 12px;
+		// background-color: grey;
+	}
+	.delete {
+		margin-right: 10px;
+		svg {
+			color: white;
+			transform: scale(0.8);
+		}
+	}
+	.edit {
+		svg {
+			color: white;
+			transform: scale(0.8);
+		}
+	}
+}
+.table-container {
+	margin: 20px 5px;
+
+	.table-header {
+		background-color: black;
+		.MuiTableCell-root {
+			color: #ffffff;
+		}
+	}
+}
